@@ -1,0 +1,10 @@
+# POST http://localhost:3000/products
+# Content-Type: application/json
+
+# {
+#     "title":"first one",
+#     "price":"23",
+#     "desc":"new description"
+# }
+
+GET http://localhost:3000/products
