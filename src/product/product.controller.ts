@@ -15,22 +15,22 @@ export class ProductController {
   constructor(private productService: ProductService) {}
 
   @Post()
-  createProduct(
+  async createProduct(
     @Body('title') title: string,
     @Body('price') price: string,
     @Body('desc') desc: string,
-  ): Product[] {
-    const product = this.productService.createProduct(title, price, desc);
+  ): Promise<any> {
+    const product = await this.productService.createProduct(title, price, desc);
     return product;
   }
 
   @Get()
-  getAllProducts(): Product[] {
+  getAllProducts(): any {
     return this.productService.getAllProducts();
   }
 
   @Get(':id')
-  getSingleProd(@Param('id') prodId: string): Product {
+  getSingleProd(@Param('id') prodId: string): any {
     return this.productService.getSingleProd(prodId);
   }
 
@@ -40,9 +40,8 @@ export class ProductController {
     @Body('title') title: string,
     @Body('price') price: string,
     @Body('desc') desc: string,
-  ): Product[] {
-    const p = this.productService.updatePro(prodId, title, price, desc);
-    return p;
+  ) {
+    this.productService.updatePro(prodId, title, price, desc);
   }
 
   @Delete(':id')
